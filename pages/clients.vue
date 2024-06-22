@@ -1,8 +1,8 @@
 <template>
   <v-row class="backgroundCol">
     <v-col
-      :cols="isColumnRatio66 ? 12 : 12"
-      :md="isColumnRatio66 ? 6 : 3"
+      cols="12"
+      md="3"
       class="left-content backgroundRow 3colSection"
     >
       <v-container class="login-container">
@@ -17,8 +17,8 @@
       </v-container>
     </v-col>
     <v-col
-      :cols="isColumnRatio66 ? 12 : 12"
-      :md="isColumnRatio66 ? 6 : 9"
+      cols="12"
+      md="9"
       class="9colSection"
     >
       <div class="d-flex justify-end">
@@ -27,7 +27,7 @@
             v-if="!showForm"
             color="#09a347"
             dark
-            @click="toggleColumnRatio"
+            @click="toggleShowForm"
           >
             Add New Client
           </v-btn>
@@ -37,16 +37,14 @@
   </v-row>
 </template>
 
-
-
-
-
 <script>
 import NewClientForm from '@/components/NewClientForm.vue'
+import ClientsList from '@/components/ClientsList.vue' // Assuming you have a ClientsList component
 
 export default {
   components: {
     NewClientForm,
+    ClientsList,
   },
   data() {
     return {
@@ -57,7 +55,6 @@ export default {
         'Bob Brown',
         'Charlie Davis',
       ],
-      isColumnRatio66: false,
       showForm: false,
       form: {
         fullName: '',
@@ -79,19 +76,16 @@ export default {
     }
   },
   methods: {
-    toggleColumnRatio() {
-      this.isColumnRatio66 = !this.isColumnRatio66
+    toggleShowForm() {
       this.showForm = !this.showForm
     },
     handleFormSubmit(form) {
       console.log('Form submitted:', form)
       this.clearForm()
       this.showForm = false
-      this.isColumnRatio66 = false
     },
     handleBack() {
       this.showForm = false
-      this.isColumnRatio66 = false
     },
     clearForm() {
       this.form = {
@@ -106,8 +100,6 @@ export default {
   },
 }
 </script>
-
-
 
 <style scoped>
 .transparent {
@@ -158,7 +150,7 @@ export default {
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-top: 0x;
+  margin-top: 0;
 }
 .longer-button {
   width: 120px;
