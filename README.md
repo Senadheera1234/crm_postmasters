@@ -1,5 +1,7 @@
 # front_end
 
+#USED NUXT2 AND VUETIFY2 TO CREATE THE FRONT END OF THE CRM_POSTMASTERS APP
+
 ## Build Setup
 
 ```bash
